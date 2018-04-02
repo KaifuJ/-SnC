@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/todo/main",
+    "pages/rank/main",
+    "pages/snc/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/todo/main",
+        "text": "Todo",
+        "iconPath": "images/todo.png",
+        "selectedIconPath": "images/todo_s.png"
+      },
+      {
+        "pagePath": "pages/snc/main",
+        "text": "SnC",
+        "iconPath": "images/snc.png",
+        "selectedIconPath": "images/snc_s.png"
+      },
+      {
+        "pagePath": "pages/rank/main",
+        "text": "Rank",
+        "iconPath": "images/rank.png",
+        "selectedIconPath": "images/rank_s.png"
+      }
+    ]
+  }
+}

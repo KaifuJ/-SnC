@@ -1,0 +1,25 @@
+@import "/static/css/vendor.wxss";
+
+.userinfo.data-v-28c6e11a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userinfo-avatar.data-v-28c6e11a {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+.userinfo-nickname.data-v-28c6e11a {
+  color: #aaa;
+}
+.usermotto.data-v-28c6e11a {
+  margin-top: 300rpx;
+}
+.form-control.data-v-28c6e11a {
+  display: block;
+  padding: 0 24rpx;
+  margin-bottom: 10rpx;
+  border: 2rpx solid #ccc;
+}
