@@ -1,17 +1,33 @@
 global.webpackJsonp([3],{
 
-/***/ 14:
+/***/ 11:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(6);
+
+
+
+var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_1__index__["a" /* default */]);
+app.$mount();
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  config: {
+    navigationBarTitleText: '查看启动日志'
+  }
+});
+
+/***/ }),
+
+/***/ 17:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_index__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_card__ = __webpack_require__(2);
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_todo_item__ = __webpack_require__(2);
 //
 //
 //
@@ -21,53 +37,32 @@ global.webpackJsonp([3],{
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  components: {
-    card: __WEBPACK_IMPORTED_MODULE_1__components_card__["a" /* default */]
-  },
+  components: {},
 
   data: function data() {
-    return {
-      logs: []
-    };
-  },
-  created: function created() {
-    var logs = wx.getStorageSync('logs') || [];
-    this.logs = logs.map(function (log) {
-      return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__utils_index__["a" /* formatTime */])(new Date(log));
-    });
+    return {};
   }
 });
 
 /***/ }),
 
-/***/ 17:
+/***/ 20:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 22:
+/***/ 26:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('ul', {
-    staticClass: "container log-list"
-  }, _vm._l((_vm.logs), function(log, index) {
-    return _c('li', {
-      key: index,
-      staticClass: "log-item",
-      class: {
-        red: _vm.aa
-      }
-    }, [_c('card', {
-      attrs: {
-        "text": (index + 1) + ' . ' + log,
-        "mpcomid": '0-' + index
-      }
-    })], 1)
-  }))], 1)
+  return _c('todo_item', {
+    attrs: {
+      "mpcomid": '0'
+    }
+  })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -82,16 +77,16 @@ if (false) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_033892fa_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_033892fa_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(26);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(17)
+  __webpack_require__(20)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
@@ -134,29 +129,7 @@ if (false) {(function () {
 /* harmony default export */ __webpack_exports__["a"] = (Component.exports);
 
 
-/***/ }),
-
-/***/ 9:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(5);
-
-
-
-var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_1__index__["a" /* default */]);
-app.$mount();
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  config: {
-    navigationBarTitleText: '查看启动日志'
-  }
-});
-
 /***/ })
 
-},[9]);
+},[11]);
 //# sourceMappingURL=main.js.map

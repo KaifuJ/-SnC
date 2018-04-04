@@ -1,0 +1,27 @@
+<template name="index$80456f86">
+  <form bindsubmit="handleProxy" bindreset="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_form data-v-1a673f4f">
+    <view class="_view data-v-1a673f4f section">
+      <view class="_view data-v-1a673f4f section__title">待办事项</view>
+      <input name="input" placeholder="请输入待办内容" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_input data-v-1a673f4f" />
+    </view>
+    <view class="_view data-v-1a673f4f section">
+      <view class="_view data-v-1a673f4f section__title">设置提醒</view>
+      <switch checked="{{newTodo.alertOrNot}}" bindchange="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_switch data-v-1a673f4f" />
+    </view>
+    <view wx:if="{{newTodo.alertOrNot}}" class="_view data-v-1a673f4f section">
+      <view class="_view data-v-1a673f4f section__title">日期</view>
+      <picker mode="date" value="{{newTodo.date}}" start="{{now_date}}" end="{{after_date}}" bindchange="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_picker data-v-1a673f4f">
+        <view class="_view data-v-1a673f4f picker"> 当前选择：{{newTodo.date}} </view>
+      </picker>
+    </view>
+    <view wx:if="{{newTodo.alertOrNot}}" class="_view data-v-1a673f4f section">
+      <view class="_view data-v-1a673f4f section__title">时间</view>
+      <picker mode="time" value="{{newTodo.time}}" start="00:00" end="23:59" bindchange="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_picker data-v-1a673f4f">
+        <view class="_view data-v-1a673f4f picker"> 当前选择：{{newTodo.time}} </view>
+      </picker>
+    </view>
+    <view class="_view data-v-1a673f4f btn-area">
+      <button formType="submit" class="_button data-v-1a673f4f">Submit</button>
+    </view>
+  </form>
+</template>

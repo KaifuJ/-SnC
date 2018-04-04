@@ -1,6 +1,6 @@
-global.webpackJsonp([4],{
+global.webpackJsonp([5],{
 
-/***/ 12:
+/***/ 14:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18,7 +18,7 @@ global.webpackJsonp([4],{
 
 /***/ }),
 
-/***/ 18:
+/***/ 21:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -29,11 +29,11 @@ global.webpackJsonp([4],{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_App_vue__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_App_vue__ = __webpack_require__(14);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(18)
+  __webpack_require__(21)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
@@ -77,7 +77,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 8:
+/***/ 9:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,7 +98,7 @@ app.$mount();
   // 这个字段走 app.json
   config: {
     // 页面前带有 ^ 符号的，会被编译成首页，其他页面可以选填，我们会自动把 webpack entry 里面的入口页面加进去
-    pages: ['pages/snc/main', '^pages/todo/main'],
+    pages: ['^pages/addTodo/main'],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
@@ -128,5 +128,5 @@ app.$mount();
 
 /***/ })
 
-},[8]);
+},[9]);
 //# sourceMappingURL=app.js.map
