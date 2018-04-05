@@ -1,30 +1,120 @@
 <template>
   <div>
-    <button> {{ text }} </button>
+    <button v-if="display.show" @tap="showActionSheet">
+      {{newTodo.text}}
+      <view v-if="newTodo.alertOrNot">
+        {{newTodo.date}} {{newTodo.time}}
+      </view>
+    </button>
   </div>
 </template>
 
 <script>
 export default {
+  props: ['newTodo'],
+
   data () {
     return{
-      text: '请输入内容',
-      time: '',
-      finished: false
+      display: {
+        show: true
+      }
     }
   },
 
   methods: {
-    markAsFinished: function () {
-      this.finished = true;
-    },
+    showActionSheet: function(){
+      const S = this.display
+      const T = this.newTodo
+      if(!T.finished){
+        let index
+        wx.showActionSheet({
+          itemList: ['标记完成', '编辑', '删除'],
+          success: function(e){
+            index = e.tapIndex
+            const todos = wx.getStorageSync('todo') || []
 
-    markAsUnfinished: function () {
-      this.finished = false;
-    },
+            if(index === 0) {
+              T.finished = !T.finished
+              let i = 0
+              for(let j = 0; j < todos.length; j++){
+                if(T.text === todos[j].text 
+                && T.alertOrNot === todos[j].alertOrNot 
+                && T.date === todos[j].date 
+                && T.time === todos[j].time 
+                && T.finished === !todos[j].finished){
+                  todos.splice(i,1,T)
+                  break
+                }
+                i = i + 1
+              }
+              wx.setStorageSync('todo', todos)
+            }
+            if(index === 1) {
+              wx.navigateTo({
+                url: '../editTodo/main'
+              })
+            }
+            if(index === 2){
+              let i = 0
+              for(let j = 0; j < todos.length; j++){
+                if(T.text === todos[j].text 
+                && T.alertOrNot === todos[j].alertOrNot 
+                && T.date === todos[j].date 
+                && T.time === todos[j].time 
+                && T.finished === todos[j].finished){
+                  todos.splice(i,1)
+                  break
+                }
+                i = i + 1
+              }
+              wx.setStorageSync('todo', todos)
+              S.show = false
+            }
+          }
+        })
+      }else{
+        let index
+        const todos = wx.getStorageSync('todo') || []
+        wx.showActionSheet({
+          itemList: ['标记未完成', '删除'],
+          success: function(e){
+            index = e.tapIndex
 
-    changeText: function () {
-      
+            if(index === 0) {
+              T.finished = !T.finished
+              let i = 0
+              for(let j = 0; j < todos.length; j++){
+                if(T.text === todos[j].text 
+                && T.alertOrNot === todos[j].alertOrNot 
+                && T.date === todos[j].date 
+                && T.time === todos[j].time 
+                && T.finished === !todos[j].finished){
+                  todos.splice(i,1,T)
+                  break
+                }
+                i = i + 1
+              }
+              wx.setStorageSync('todo', todos)
+            }
+            if(index === 1){
+              let i = 0
+              for(let j = 0; j < todos.length; j++){
+                if(T.text === todos[j].text 
+                && T.alertOrNot === todos[j].alertOrNot 
+                && T.date === todos[j].date 
+                && T.time === todos[j].time 
+                && T.finished === todos[j].finished){
+                  todos.splice(i,1)
+                  break
+                }
+                i = i + 1
+              }
+              wx.setStorageSync('todo', todos)
+              S.show = false
+            }
+          }
+        })
+      }
     }
   }
 }

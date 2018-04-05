@@ -1,5 +1,7 @@
 <template name="todo_item$1494c8be">
   <view class="_div data-v-ab18445a">
-    <button class="_button data-v-ab18445a"> {{ text }} </button>
+    <button wx:if="{{display.show}}" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_button data-v-ab18445a"> {{newTodo.text}}
+      <view wx:if="{{newTodo.alertOrNot}}" class="_view data-v-ab18445a"> {{newTodo.date}} {{newTodo.time}} </view>
+    </button>
   </view>
 </template>

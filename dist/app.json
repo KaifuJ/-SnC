@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/todo/main",
     "pages/addTodo/main",
     "pages/rank/main",
-    "pages/snc/main",
-    "pages/todo/main"
+    "pages/snc/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

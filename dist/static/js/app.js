@@ -18,7 +18,7 @@ global.webpackJsonp([5],{
 
 /***/ }),
 
-/***/ 21:
+/***/ 24:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -33,7 +33,7 @@ global.webpackJsonp([5],{
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(21)
+  __webpack_require__(24)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
@@ -98,7 +98,7 @@ app.$mount();
   // 这个字段走 app.json
   config: {
     // 页面前带有 ^ 符号的，会被编译成首页，其他页面可以选填，我们会自动把 webpack entry 里面的入口页面加进去
-    pages: ['^pages/addTodo/main'],
+    pages: ['^pages/todo/main'],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',

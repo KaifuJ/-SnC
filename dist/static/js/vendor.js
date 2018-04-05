@@ -1,6 +1,5 @@
-global.webpackJsonp([0],{
-
-/***/ 0:
+global.webpackJsonp([0],[
+/* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {// fix env
@@ -5466,11 +5465,10 @@ return Vue$3;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(31)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)))
 
 /***/ }),
-
-/***/ 1:
+/* 1 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -5567,53 +5565,16 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-
-/***/ 15:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  data: function data() {
-    return {
-      text: '请输入内容',
-      time: '',
-      finished: false
-    };
-  },
-
-
-  methods: {
-    markAsFinished: function markAsFinished() {
-      this.finished = true;
-    },
-
-    markAsUnfinished: function markAsUnfinished() {
-      this.finished = false;
-    },
-
-    changeText: function changeText() {}
-  }
-});
-
-/***/ }),
-
-/***/ 2:
+/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_todo_item_vue__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_ab18445a_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_todo_item_vue__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_ab18445a_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_todo_item_vue__ = __webpack_require__(33);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(25)
+  __webpack_require__(28)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
@@ -5657,15 +5618,7 @@ if (false) {(function () {
 
 
 /***/ }),
-
-/***/ 25:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 3:
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5691,13 +5644,185 @@ function formatTime(date) {
 }
 
 /***/ }),
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/***/ 30:
+"use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  props: ['newTodo'],
+
+  data: function data() {
+    return {
+      display: {
+        show: true
+      }
+    };
+  },
+
+
+  methods: {
+    showActionSheet: function showActionSheet() {
+      var S = this.display;
+      var T = this.newTodo;
+      if (!T.finished) {
+        var index = void 0;
+        wx.showActionSheet({
+          itemList: ['标记完成', '编辑', '删除'],
+          success: function success(e) {
+            index = e.tapIndex;
+            var todos = wx.getStorageSync('todo') || [];
+
+            if (index === 0) {
+              T.finished = !T.finished;
+              var i = 0;
+              for (var j = 0; j < todos.length; j++) {
+                if (T.text === todos[j].text && T.alertOrNot === todos[j].alertOrNot && T.date === todos[j].date && T.time === todos[j].time && T.finished === !todos[j].finished) {
+                  todos.splice(i, 1, T);
+                  break;
+                }
+                i = i + 1;
+              }
+              wx.setStorageSync('todo', todos);
+            }
+            if (index === 1) {
+              wx.navigateTo({
+                url: '../editTodo/main'
+              });
+            }
+            if (index === 2) {
+              var _i = 0;
+              for (var _j = 0; _j < todos.length; _j++) {
+                if (T.text === todos[_j].text && T.alertOrNot === todos[_j].alertOrNot && T.date === todos[_j].date && T.time === todos[_j].time && T.finished === todos[_j].finished) {
+                  todos.splice(_i, 1);
+                  break;
+                }
+                _i = _i + 1;
+              }
+              wx.setStorageSync('todo', todos);
+              S.show = false;
+            }
+          }
+        });
+      } else {
+        var _index = void 0;
+        var todos = wx.getStorageSync('todo') || [];
+        wx.showActionSheet({
+          itemList: ['标记未完成', '删除'],
+          success: function success(e) {
+            _index = e.tapIndex;
+
+            if (_index === 0) {
+              T.finished = !T.finished;
+              var i = 0;
+              for (var j = 0; j < todos.length; j++) {
+                if (T.text === todos[j].text && T.alertOrNot === todos[j].alertOrNot && T.date === todos[j].date && T.time === todos[j].time && T.finished === !todos[j].finished) {
+                  todos.splice(i, 1, T);
+                  break;
+                }
+                i = i + 1;
+              }
+              wx.setStorageSync('todo', todos);
+            }
+            if (_index === 1) {
+              var _i2 = 0;
+              for (var _j2 = 0; _j2 < todos.length; _j2++) {
+                if (T.text === todos[_j2].text && T.alertOrNot === todos[_j2].alertOrNot && T.date === todos[_j2].date && T.time === todos[_j2].time && T.finished === todos[_j2].finished) {
+                  todos.splice(_i2, 1);
+                  break;
+                }
+                _i2 = _i2 + 1;
+              }
+              wx.setStorageSync('todo', todos);
+              S.show = false;
+            }
+          }
+        });
+      }
+    }
+  }
+});
+
+/***/ }),
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(21), __esModule: true };
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var core = __webpack_require__(22);
+var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
+module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
+  return $JSON.stringify.apply($JSON, arguments);
+};
+
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports) {
+
+var core = module.exports = { version: '2.5.4' };
+if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
+
+
+/***/ }),
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('button', [_vm._v(" " + _vm._s(_vm.text) + " ")])], 1)
+  return _c('div', [(_vm.display.show) ? _c('button', {
+    attrs: {
+      "eventid": '0'
+    },
+    on: {
+      "tap": _vm.showActionSheet
+    }
+  }, [_vm._v("\n    " + _vm._s(_vm.newTodo.text) + "\n    "), (_vm.newTodo.alertOrNot) ? _c('view', [_vm._v("\n      " + _vm._s(_vm.newTodo.date) + " " + _vm._s(_vm.newTodo.time) + "\n    ")]) : _vm._e()]) : _vm._e()], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -5711,8 +5836,7 @@ if (false) {
 }
 
 /***/ }),
-
-/***/ 31:
+/* 34 */
 /***/ (function(module, exports) {
 
 var g;
@@ -5739,8 +5863,13 @@ module.exports = g;
 
 
 /***/ }),
-
-/***/ 38:
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */
 /***/ (function(module, exports) {
 
 /*
@@ -5822,8 +5951,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-
-/***/ 39:
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -5842,7 +5970,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(40)
+var listToStyles = __webpack_require__(43)
 
 /*
 type StyleObject = {
@@ -6051,8 +6179,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-
-/***/ 40:
+/* 43 */
 /***/ (function(module, exports) {
 
 /**
@@ -6085,6 +6212,5 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ })
-
-});
+]);
 //# sourceMappingURL=vendor.js.map

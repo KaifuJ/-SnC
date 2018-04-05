@@ -26,6 +26,9 @@ app.$mount();
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__);
+
 //
 //
 //
@@ -69,7 +72,28 @@ app.$mount();
     var date_7 = new Date();
     date_7.setDate(date.getMonth() + 7);
 
-    function dateToStr(datep) {
+    var riqi = this.dateToStr(date).d;
+    var shijian = this.dateToStr(date).t;
+    var after_riqi = this.dateToStr(date_7).d;
+
+    return {
+      now_date: riqi,
+      after_date: after_riqi,
+
+      newTodo: {
+        text: '',
+        alertOrNot: false,
+        date: riqi,
+        time: shijian,
+        finished: false,
+        priority: 1
+      }
+    };
+  },
+
+
+  methods: {
+    dateToStr: function dateToStr(datep) {
       var riqi = datep.getFullYear().toString() + '-';
       var shijian = '';
 
@@ -99,27 +123,8 @@ app.$mount();
         d: riqi,
         t: shijian
       };
-    }
+    },
 
-    var riqi = dateToStr(date).d;
-    var shijian = dateToStr(date).t;
-    var after_riqi = dateToStr(date_7).d;
-
-    return {
-      now_date: riqi,
-      after_date: after_riqi,
-
-      newTodo: {
-        text: '',
-        alertOrNot: false,
-        date: riqi,
-        time: shijian
-      }
-    };
-  },
-
-
-  methods: {
     switchChange: function switchChange() {
       this.newTodo.alertOrNot = !this.newTodo.alertOrNot;
     },
@@ -141,26 +146,57 @@ app.$mount();
 
     formSubmit: function formSubmit() {
       var todos = wx.getStorageSync('todo') || [];
-      todos.unshift(this.newTodo);
+      if (this.newTodo.text === '') {
+        wx.switchTab({
+          url: '../todo/main'
+        });
+        console.log(todos);
+        return;
+      }
+
+      todos.unshift(JSON.parse(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default()(this.newTodo)));
       wx.setStorageSync('todo', todos);
       console.log(todos);
       wx.switchTab({
         url: '../todo/main'
       }); //back to todo page
+      console.log("submit finished");
     }
+  },
+
+  onShow: function onShow() {
+    console.log('onShow hook is called');
+    var date = new Date();
+    var date_7 = new Date();
+    date_7.setDate(date.getMonth() + 7);
+
+    var riqi = this.dateToStr(date).d;
+    var shijian = this.dateToStr(date).t;
+    var after_riqi = this.dateToStr(date_7).d;
+
+    var temp = {
+      text: '',
+      alertOrNot: false,
+      date: riqi,
+      time: shijian,
+      finished: false,
+      priority: 1
+    };
+    this.newTodo = temp;
   }
+
 });
 
 /***/ }),
 
-/***/ 23:
+/***/ 26:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 28:
+/***/ 31:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -258,11 +294,11 @@ if (false) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_1a673f4f_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_1a673f4f_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(31);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(23)
+  __webpack_require__(26)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */

@@ -41,7 +41,27 @@ export default {
     var date_7 = new Date()
     date_7.setDate(date.getMonth() + 7)
 
-    function dateToStr(datep){
+    var riqi = this.dateToStr(date).d
+    var shijian = this.dateToStr(date).t
+    var after_riqi = this.dateToStr(date_7).d
+
+    return {
+      now_date: riqi,
+      after_date: after_riqi,
+
+      newTodo: {
+        text: '',
+        alertOrNot: false,
+        date: riqi,
+        time: shijian,
+        finished: false,
+        priority: 1
+      }
+    }
+  },
+
+  methods: {
+    dateToStr: function(datep){
       var riqi = datep.getFullYear().toString() + '-'
       var shijian = ''
 
@@ -71,31 +91,13 @@ export default {
         d: riqi,
         t: shijian
       }
-    }
+    },
 
-    var riqi = dateToStr(date).d
-    var shijian = dateToStr(date).t
-    var after_riqi = dateToStr(date_7).d
-
-    return {
-      now_date: riqi,
-      after_date: after_riqi,
-
-      newTodo: {
-        text: '',
-        alertOrNot: false,
-        date: riqi,
-        time: shijian
-      }
-    }
-  },
-
-  methods: {
-    switchChange: function () {
+    switchChange: function(){
       this.newTodo.alertOrNot = !this.newTodo.alertOrNot
     },
 
-    textChange: function (e) {
+    textChange: function(e){
       this.newTodo.text = e.mp.detail.value
       console.log(this.newTodo.text)
     },
@@ -110,16 +112,47 @@ export default {
       console.log(this.newTodo.time)
     },
 
-    formSubmit: function () {
+    formSubmit: function(){
       const todos = wx.getStorageSync('todo') || []
-      todos.unshift(this.newTodo)
+      if(this.newTodo.text === ''){
+        wx.switchTab({
+          url: '../todo/main'
+        })
+        console.log(todos)
+        return
+      }
+
+      todos.unshift(JSON.parse(JSON.stringify(this.newTodo)))
       wx.setStorageSync('todo', todos)
       console.log(todos)
       wx.switchTab({
         url: '../todo/main'
       })//back to todo page
+      console.log("submit finished")
     }
+  },
+
+  onShow: function(){
+    console.log('onShow hook is called')
+    var date = new Date()
+    var date_7 = new Date()
+    date_7.setDate(date.getMonth() + 7)
+
+    var riqi = this.dateToStr(date).d
+    var shijian = this.dateToStr(date).t
+    var after_riqi = this.dateToStr(date_7).d
+
+    var temp = {
+        text: '',
+        alertOrNot: false,
+        date: riqi,
+        time: shijian,
+        finished: false,
+        priority: 1
+      }
+    this.newTodo = temp
   }
+
 }
 </script>
 

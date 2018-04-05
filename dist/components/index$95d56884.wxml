@@ -1,0 +1,6 @@
+<import src="todo_item$867abe44" />
+<template name="index$95d56884">
+  <view class="_div data-v-12d73970">
+    <template text="fuck" data="{{...$root[$kk+'0'], $root}}" is="todo_item$867abe44"></template>
+  </view>
+</template>

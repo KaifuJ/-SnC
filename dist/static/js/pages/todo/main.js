@@ -14,6 +14,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_1__index__["a" /* default */]);
 app.$mount();
 
+/* harmony default export */ __webpack_exports__["default"] = ({
+  config: {
+    navigationBarTitleText: '待办事项'
+  }
+});
+
 /***/ }),
 
 /***/ 19:
@@ -27,12 +33,19 @@ app.$mount();
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
-    return {};
+    return {
+      todos: []
+    };
   },
 
 
@@ -40,28 +53,56 @@ app.$mount();
     todo_item: __WEBPACK_IMPORTED_MODULE_0__components_todo_item__["a" /* default */]
   },
 
-  methods: {}
+  methods: {
+    addTodo: function addTodo() {
+      wx.navigateTo({
+        url: '../addTodo/main'
+      });
+    }
+  },
+
+  created: function created() {
+    console.log("created hook is called");
+    this.todos = wx.getStorageSync('todo');
+  },
+
+  onShow: function onShow() {
+    console.log("onShow hook is called");
+    this.todos = wx.getStorageSync('todo');
+  }
 });
 
 /***/ }),
 
-/***/ 24:
+/***/ 27:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 29:
+/***/ 32:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('todo_item', {
+  return _c('view', [_vm._l((_vm.todos), function(todo, index) {
+    return _c('div', [_c('todo_item', {
+      attrs: {
+        "newTodo": todo,
+        "mpcomid": '0-' + index
+      }
+    })], 1)
+  }), _vm._v(" "), _c('button', {
+    staticClass: "circle",
     attrs: {
-      "mpcomid": '0'
+      "type": "primary",
+      "eventid": '0'
+    },
+    on: {
+      "tap": _vm.addTodo
     }
-  })], 1)
+  }, [_vm._v("+")])], 2)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -81,11 +122,11 @@ if (false) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_4e7e52d8_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_4e7e52d8_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(32);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(24)
+  __webpack_require__(27)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */

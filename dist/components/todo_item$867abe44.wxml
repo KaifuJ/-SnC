@@ -1,0 +1,5 @@
+<template name="todo_item$867abe44">
+  <view class="_div data-v-ab18445a">
+    <button bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_button data-v-ab18445a"> {{newTodo.text}} </button>
+  </view>
+</template>
