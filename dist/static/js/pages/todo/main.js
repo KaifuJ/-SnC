@@ -38,13 +38,34 @@ app.$mount();
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
     return {
-      todos: []
+      todos: [],
+      todos_5: this.filterBy(this.todos, 5)
     };
   },
 
@@ -57,6 +78,14 @@ app.$mount();
     addTodo: function addTodo() {
       wx.navigateTo({
         url: '../addTodo/main'
+      });
+    },
+
+    filterBy: function filterBy(list, num) {
+      console.log('FUUUUUUUUUUUUUUUUUUUCK');
+      console.log(list === '');
+      return list.filter(function (item) {
+        return item.priority === num;
       });
     }
   },
@@ -86,11 +115,46 @@ app.$mount();
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('view', [_vm._l((_vm.todos), function(todo, index) {
+  return _c('view', [_vm._l((_vm.todos_5), function(todo, index) {
     return _c('div', [_c('todo_item', {
       attrs: {
         "newTodo": todo,
         "mpcomid": '0-' + index
+      }
+    })], 1)
+  }), _vm._v(" "), _vm._l((_vm.filterBy(this.todos, 4)), function(todo, index) {
+    return _c('div', [_c('todo_item', {
+      attrs: {
+        "newTodo": todo,
+        "mpcomid": '1-' + index
+      }
+    })], 1)
+  }), _vm._v(" "), _vm._l((_vm.filterBy(this.todos, 3)), function(todo, index) {
+    return _c('div', [_c('todo_item', {
+      attrs: {
+        "newTodo": todo,
+        "mpcomid": '2-' + index
+      }
+    })], 1)
+  }), _vm._v(" "), _vm._l((_vm.filterBy(this.todos, 2)), function(todo, index) {
+    return _c('div', [_c('todo_item', {
+      attrs: {
+        "newTodo": todo,
+        "mpcomid": '3-' + index
+      }
+    })], 1)
+  }), _vm._v(" "), _vm._l((_vm.filterBy(this.todos, 1)), function(todo, index) {
+    return _c('div', [_c('todo_item', {
+      attrs: {
+        "newTodo": todo,
+        "mpcomid": '4-' + index
+      }
+    })], 1)
+  }), _vm._v(" "), _vm._l((_vm.filterBy(this.todos, 0)), function(todo, index) {
+    return _c('div', [_c('todo_item', {
+      attrs: {
+        "newTodo": todo,
+        "mpcomid": '5-' + index
       }
     })], 1)
   }), _vm._v(" "), _c('button', {

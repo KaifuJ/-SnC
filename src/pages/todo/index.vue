@@ -1,10 +1,30 @@
 <template>
 <view>
-  <!-- eslint-disable-next-line vue/require-v-for-key -->
-  <div v-for="todo in todos">
-    <!-- ignore this error -->
+  <div v-for="todo in todos_5">
     <todo_item :newTodo="todo"></todo_item>
   </div>
+
+  <div v-for="todo in filterBy(this.todos, 4)">
+    <todo_item :newTodo="todo"></todo_item>
+  </div>
+
+  <div v-for="todo in filterBy(this.todos, 3)">
+    <todo_item :newTodo="todo"></todo_item>
+  </div>
+
+  <div v-for="todo in filterBy(this.todos, 2)">
+    <todo_item :newTodo="todo"></todo_item>
+  </div>
+
+  <div v-for="todo in filterBy(this.todos, 1)">
+    <todo_item :newTodo="todo"></todo_item>
+  </div>
+
+  <div v-for="todo in filterBy(this.todos, 0)">
+    <todo_item :newTodo="todo"></todo_item>
+  </div>
+
+
   <button type="primary" class="circle" @tap="addTodo">+</button>
 </view>
 </template>
@@ -15,7 +35,8 @@ import todo_item from '@/components/todo_item'
 export default {
   data () {
     return {
-      todos: []
+      todos: [],
+      todos_5: this.filterBy(this.todos, 5)
     }
   },
 
@@ -27,6 +48,14 @@ export default {
     addTodo: function(){
       wx.navigateTo({
         url: '../addTodo/main'
+      })
+    },
+
+    filterBy: function(list, num){
+      console.log('FUUUUUUUUUUUUUUUUUUUCK')
+      console.log(list === '')
+      return list.filter(function(item){
+        return item.priority === num
       })
     }
   },

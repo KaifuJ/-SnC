@@ -65,6 +65,13 @@ app.$mount();
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   data: function data() {
@@ -86,7 +93,8 @@ app.$mount();
         date: riqi,
         time: shijian,
         finished: false,
-        priority: 1
+        priority: 1,
+        oldPriority: 0
       }
     };
   },
@@ -123,6 +131,11 @@ app.$mount();
         d: riqi,
         t: shijian
       };
+    },
+
+    sliderChange: function sliderChange(e) {
+      this.newTodo.priority = e.mp.detail.value;
+      console.log(this.newTodo.priority);
     },
 
     switchChange: function switchChange() {
@@ -203,7 +216,7 @@ app.$mount();
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('form', {
     attrs: {
-      "eventid": '4'
+      "eventid": '5'
     },
     on: {
       "submit": _vm.formSubmit,
@@ -223,13 +236,31 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "input": _vm.textChange
     }
   })]), _vm._v(" "), _c('view', {
+    staticClass: "section section_gap"
+  }, [_c('text', {
+    staticClass: "section__title"
+  }, [_vm._v("优先级")]), _vm._v(" "), _c('view', {
+    staticClass: "body-view"
+  }, [_c('slider', {
+    attrs: {
+      "value": _vm.newTodo.priority,
+      "min": "1",
+      "max": "5",
+      "step": "1",
+      "show-value": "true",
+      "eventid": '1'
+    },
+    on: {
+      "change": _vm.sliderChange
+    }
+  })])]), _vm._v(" "), _c('view', {
     staticClass: "section"
   }, [_c('view', {
     staticClass: "section__title"
   }, [_vm._v("设置提醒")]), _vm._v(" "), _c('switch', {
     attrs: {
       "checked": _vm.newTodo.alertOrNot,
-      "eventid": '1'
+      "eventid": '2'
     },
     on: {
       "change": _vm.switchChange
@@ -244,7 +275,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "value": _vm.newTodo.date,
       "start": _vm.now_date,
       "end": _vm.after_date,
-      "eventid": '2'
+      "eventid": '3'
     },
     on: {
       "change": _vm.dateChange
@@ -261,7 +292,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "value": _vm.newTodo.time,
       "start": "00:00",
       "end": "23:59",
-      "eventid": '3'
+      "eventid": '4'
     },
     on: {
       "change": _vm.timeChange

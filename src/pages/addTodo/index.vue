@@ -5,6 +5,13 @@
     <input name="input" placeholder="请输入待办内容" @input="textChange"/>
   </view>
 
+  <view class="section section_gap">
+    <text class="section__title">优先级</text>
+    <view class="body-view">
+      <slider :value="newTodo.priority" @change="sliderChange" min='1' max='5' step="1" show-value='true'/>
+    </view>
+  </view>
+
   <view class="section">
     <view class="section__title">设置提醒</view>
     <switch :checked="newTodo.alertOrNot" @change="switchChange"/>
@@ -55,7 +62,8 @@ export default {
         date: riqi,
         time: shijian,
         finished: false,
-        priority: 1
+        priority: 1,
+        oldPriority: 0
       }
     }
   },
@@ -91,6 +99,11 @@ export default {
         d: riqi,
         t: shijian
       }
+    },
+
+    sliderChange: function(e){
+      this.newTodo.priority = e.mp.detail.value
+      console.log(this.newTodo.priority)
     },
 
     switchChange: function(){

@@ -1,8 +1,23 @@
 <import src="todo_item$1494c8be" />
 <template name="index$22db9c6c">
   <view class="_view data-v-4e7e52d8">
-    <view wx:for="{{todos}}" wx:for-index="index" wx:for-item="todo" class="_div data-v-4e7e52d8">
+    <view wx:for="{{todos_5}}" wx:for-index="index" wx:for-item="todo" class="_div data-v-4e7e52d8">
       <template data="{{...$root[$kk+'0-'+index], $root}}" is="todo_item$1494c8be"></template>
+    </view>
+    <view wx:for="{{filterBy(this.todos, 4)}}" wx:for-index="index" wx:for-item="todo" class="_div data-v-4e7e52d8">
+      <template data="{{...$root[$kk+'1-'+index], $root}}" is="todo_item$1494c8be"></template>
+    </view>
+    <view wx:for="{{filterBy(this.todos, 3)}}" wx:for-index="index" wx:for-item="todo" class="_div data-v-4e7e52d8">
+      <template data="{{...$root[$kk+'2-'+index], $root}}" is="todo_item$1494c8be"></template>
+    </view>
+    <view wx:for="{{filterBy(this.todos, 2)}}" wx:for-index="index" wx:for-item="todo" class="_div data-v-4e7e52d8">
+      <template data="{{...$root[$kk+'3-'+index], $root}}" is="todo_item$1494c8be"></template>
+    </view>
+    <view wx:for="{{filterBy(this.todos, 1)}}" wx:for-index="index" wx:for-item="todo" class="_div data-v-4e7e52d8">
+      <template data="{{...$root[$kk+'4-'+index], $root}}" is="todo_item$1494c8be"></template>
+    </view>
+    <view wx:for="{{filterBy(this.todos, 0)}}" wx:for-index="index" wx:for-item="todo" class="_div data-v-4e7e52d8">
+      <template data="{{...$root[$kk+'5-'+index], $root}}" is="todo_item$1494c8be"></template>
     </view>
     <button type="primary" class="_button data-v-4e7e52d8 circle" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">+</button>
   </view>

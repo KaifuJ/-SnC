@@ -5697,9 +5697,11 @@ function formatTime(date) {
 
             if (index === 0) {
               T.finished = !T.finished;
+              T.oldPriority = T.priority;
+              T.priority = 0;
               var i = 0;
               for (var j = 0; j < todos.length; j++) {
-                if (T.text === todos[j].text && T.alertOrNot === todos[j].alertOrNot && T.date === todos[j].date && T.time === todos[j].time && T.finished === !todos[j].finished) {
+                if (T.text === todos[j].text && T.alertOrNot === todos[j].alertOrNot && T.date === todos[j].date && T.time === todos[j].time && T.finished === !todos[j].finished && T.oldPriority === todos[j].priority) {
                   todos.splice(i, 1, T);
                   break;
                 }
@@ -5736,6 +5738,7 @@ function formatTime(date) {
 
             if (_index === 0) {
               T.finished = !T.finished;
+              T.priority = T.oldPriority;
               var i = 0;
               for (var j = 0; j < todos.length; j++) {
                 if (T.text === todos[j].text && T.alertOrNot === todos[j].alertOrNot && T.date === todos[j].date && T.time === todos[j].time && T.finished === !todos[j].finished) {
